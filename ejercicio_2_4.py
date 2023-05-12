@@ -10,16 +10,22 @@ productos = [
     {"id": 5, "nombre": "Cama", "color": "blanco", "tipo": "mueble", "precio": 10},
 ]
 
-def obtener_informacion_producto(productos, id_producto):
+def obtener_informacion_producto(productos, nombre):
     for producto in productos:
-        if producto["id"] == id_producto:
-            nombre = producto["nombre"]
-            color = producto["color"]
-            precio = producto["precio"]
-            tipo = producto["tipo"]
-            return f"{nombre} {color} {tipo} ${precio}" #se usó f-string para formatear la cadena de texto
-    return "Producto no encontrado"
+        if producto["nombre"] == nombre:
+            informacion = {
+                "nombre": producto["nombre"],
+                "color": producto["color"],
+                "tipo": producto["tipo"],
+                "precio": producto["precio"]
+
+            }
+            return informacion
+
+    return "No existe"  # Si no se encuentra el producto, se devuelve "No existe"
+
+    
 
 
-informacion = obtener_informacion_producto(productos, 3)
+informacion = obtener_informacion_producto(productos, "Camiseta")
 print(informacion)
